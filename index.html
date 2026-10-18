@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<!--
-  sina hosseini — portfolio
-  plain html + css + js, no frameworks, no build step.
--->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -702,16 +698,16 @@ footer strong{color:var(--text);font-weight:500}
 
 /* ---- particle portrait (hero) ---- */
 .hero{width:min(1320px,calc(100% - 40px));gap:clamp(28px,4vw,64px)}
-.hero-visual{position:relative;z-index:2;flex:0 0 auto;width:min(37vw,500px);opacity:0;animation:heroIn .8s .9s ease forwards}
+.hero-visual{position:relative;z-index:2;flex:0 0 auto;width:min(42vw,600px);opacity:0;animation:heroIn .8s .9s ease forwards}
 #portraitWrap{position:relative;width:100%;aspect-ratio:1}
-#portrait{position:absolute;inset:9%;width:82%;height:82%;display:block}
+#portrait{position:absolute;inset:6.5%;width:87%;height:87%;display:block}
 .hero-orbit{position:absolute;inset:0;width:100%;height:100%;animation:ppSpin 46s linear infinite}
 .hero-orbit text{font-family:var(--font-mono);font-size:10.5px;letter-spacing:3.2px;fill:var(--text-dim);text-transform:uppercase}
 @keyframes ppSpin{to{transform:rotate(360deg)}}
-@media (max-width:1180px){.hero-visual{width:min(40vw,400px)}}
+@media (max-width:1180px){.hero-visual{width:min(46vw,500px)}}
 @media (max-width:1020px){
   .hero{flex-direction:column;justify-content:center;gap:10px}
-  .hero-visual{width:min(70vw,400px);margin:6px auto 0}
+  .hero-visual{width:min(76vw,470px);margin:6px auto 0}
 }
 /* ---- side section dots ---- */
 .dots{position:fixed;right:24px;top:50%;transform:translateY(-50%);z-index:90;
@@ -1750,6 +1746,8 @@ if(pcv&&pcv.getContext){
       var lum=(0.299*data[i]+0.587*data[i+1]+0.114*data[i+2])/255;
       var dark=1-lum;
       if(img){
+        /* transparent pixel (png without background) -> no dot at all */
+        if(data[i+3]<128)continue;
         var a=0.16+0.84*dark;
         if(a<0.20)continue;
         dots.push({tx:(x+.5)*step,ty:(y+.5)*step,r:step*(0.30+0.42*dark),a:a});
@@ -1758,7 +1756,7 @@ if(pcv&&pcv.getContext){
         dots.push({tx:(x+.5)*step,ty:(y+.5)*step,r:step*0.36,a:0.95});
       }
     }
-    if(dots.length>13000)dots=dots.filter(function(_,i){return i%2===0||Math.random()<0.35});
+    if(dots.length>16000)dots=dots.filter(function(_,i){return i%2===0||Math.random()<0.35});
     dots.forEach(function(dt){
       var ang=Math.random()*6.2832,rad=R*(1.25+Math.random()*0.55);
       dt.sx=cx+Math.cos(ang)*rad;dt.sy=cy+Math.sin(ang)*rad;
@@ -1881,5 +1879,5 @@ if(fine&&dot&&ring&&!window.matchMedia('(prefers-reduced-motion: reduce)').match
 }
 })();
 </script>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a4c87d0b6dfeabf0',t:'MTc5MjMzNjQyMQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
