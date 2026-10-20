@@ -1257,12 +1257,6 @@ body.has-cur .cur-dot,body.has-cur .cur-ring{display:block}
       <i class="spot-layer" aria-hidden="true"></i>
       <h3>English</h3>
       <span>Working proficiency</span>
-      <div class="lang-pills">
-        <span class="lang-pill">TOEFL Mock · 4.5 / 6</span>
-        <!-- EF SET: after taking the test, uncomment and put your score in:
-        <span class="lang-pill">EF SET · 72 / 100</span>
-        -->
-      </div>
     </div>
     <div class="lang-card reveal spot"><i class="spot-layer" aria-hidden="true"></i><h3>Korean</h3><span>Beginner</span></div>
   </div>
@@ -1716,7 +1710,7 @@ if(pcv&&pcv.getContext){
     PSZ=cssW;
     pcv.width=cssW*d;pcv.height=cssW*d;
     pctx.setTransform(d,0,0,d,0,0);
-    var G=cssW>500?181:(cssW>340?136:102);
+    var G=cssW>500?128:(cssW>340?96:72);
     var off=document.createElement('canvas');off.width=G;off.height=G;
     var octx=off.getContext('2d');
     if(img){
@@ -1756,7 +1750,7 @@ if(pcv&&pcv.getContext){
         dots.push({tx:(x+.5)*step,ty:(y+.5)*step,r:step*0.36,a:0.95});
       }
     }
-    if(dots.length>16000)dots=dots.filter(function(_,i){return i%2===0||Math.random()<0.35});
+    if(dots.length>8000)dots=dots.filter(function(_,i){return i%2===0||Math.random()<0.35});
     dots.forEach(function(dt){
       var ang=Math.random()*6.2832,rad=R*(1.25+Math.random()*0.55);
       dt.sx=cx+Math.cos(ang)*rad;dt.sy=cy+Math.sin(ang)*rad;
